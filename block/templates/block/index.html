@@ -1,0 +1,6 @@
+{% if block_height %}
+    <a href="/block/{{ block_height }}/">Block {{ block_height }}</a>
+    Magic Number: {{ magic_number }}
+{% else %}
+    <p>No Block number given.</p>
+{% endif %}
