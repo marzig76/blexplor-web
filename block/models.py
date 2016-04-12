@@ -16,19 +16,7 @@ class Block(models.Model):
     tx_count = models.IntegerField()
 
     def __str__(self):
-        response = (
-            "Block Height: " + str(self.block_height) + "<br />" +
-            "Magic Number: " + str(self.magic_number) + "<br />" +
-            "Block Size: " + str(self.block_size) + "<br />" +
-            "Version: " + str(self.version) + "<br />" +
-            "Prev Hash: " + str(self.prev_hash) + "<br />" +
-            "Merkel Root: " + str(self.merkel_root) + "<br />" +
-            "Block Time: " + str(self.block_time) + "<br />" +
-            "Target: " + str(self.target) + "<br />" +
-            "Nonce: " + str(self.nonce) + "<br />" +
-            "Tx Count: " + str(self.tx_count)
-        )
-        return response
+        return str(self.block_height)
 
 
 class Tx(models.Model):
