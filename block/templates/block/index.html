@@ -1,6 +1,14 @@
-{% if block_height %}
-    <a href="/block/{{ block_height }}/">Block {{ block_height }}</a>
-    Magic Number: {{ magic_number }}
+{% if b.block_height %}
+    <a href="/block/{{ b.block_height }}/">Block {{ b.block_height }}</a>
+    Magic Number: {{ b.magic_number }}
+    Block Size: {{ b.block_size }}
+    Version: {{ b.version }}
+    Previous Hash: {{ b.prev_hash }}
+    Merkel Root: {{ b.merkel_root }}
+    Block Time: {{ b.block_time }}
+    Difficulty: {{ b.target }}
+    Nonce: {{ b.nonce }}
+    Tx Count: {{ b.tx_count }}
 {% else %}
     <p>No Block number given.</p>
 {% endif %}
