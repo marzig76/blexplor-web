@@ -1,0 +1,5 @@
+{% if address %}
+    Details of address: <a href="/address/{{ address }}/">{{ address }}</a>
+{% else %}
+    <p>No address specified.</p>
+{% endif %}
