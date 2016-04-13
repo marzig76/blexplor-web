@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'block.apps.BlockConfig',
+    'address.apps.AddressConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
