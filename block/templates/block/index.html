@@ -14,7 +14,25 @@
         ----------------------------<br />
         Version: {{ tx.version }} <br />
         Inputs: {{ tx.tx_input_count }} <br />
+
+        {% for input in inputs %}
+            {% if input.tx_id == tx.id %}
+                Previous Hash: {{ input.prev_hash }} <br />
+                Index: {{ input.index }}
+                Script Bytes: {{ input.script_bytes }} <br />
+                Sigscript: {{ input.sigscript }} <br />
+                Sequence: {{ input.sequence }}
+            {% endif %}
+        {% endfor %}
         Outputs: {{ tx.tx_output_count }} <br />
+
+        {% for output in outputs %}
+            {% if output.tx_id == tx.id %}
+                Value: {{ output.value }} <br />
+                ScriptPK Bytes: {{ input.script_pk_bytes }}
+                ScriptPK: {{ input.script_pk }}
+            {% endif %}
+        {% endfor %}
         Lock Time: {{ tx.lock_time }} <br />
     {% endfor  %}
 {% else %}
