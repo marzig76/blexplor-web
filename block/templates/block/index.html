@@ -1,5 +1,5 @@
 {% if b.block_height %}
-    <a href="/block/{{ b.block_height }}/">Block {{ b.block_height }}</a>
+    <a href="/block/{{ b.block_height }}/">Block {{ b.block_height }}</a><br />
     Magic Number: {{ b.magic_number }} <br />
     Block Size: {{ b.block_size }} <br />
     Version: {{ b.version }} <br />
@@ -18,10 +18,10 @@
         {% for input in inputs %}
             {% if input.tx_id == tx.id %}
                 Previous Hash: {{ input.prev_hash }} <br />
-                Index: {{ input.index }}
+                Index: {{ input.index }} <br />
                 Script Bytes: {{ input.script_bytes }} <br />
                 Sigscript: {{ input.sigscript }} <br />
-                Sequence: {{ input.sequence }}
+                Sequence: {{ input.sequence }} <br />
             {% endif %}
         {% endfor %}
         Outputs: {{ tx.tx_output_count }} <br />
@@ -29,8 +29,8 @@
         {% for output in outputs %}
             {% if output.tx_id == tx.id %}
                 Value: {{ output.value }} <br />
-                ScriptPK Bytes: {{ input.script_pk_bytes }}
-                ScriptPK: {{ input.script_pk }}
+                ScriptPK Bytes: {{ output.script_pk_bytes }} <br />
+                ScriptPK: {{ output.script_pk }} <br />
             {% endif %}
         {% endfor %}
         Lock Time: {{ tx.lock_time }} <br />
