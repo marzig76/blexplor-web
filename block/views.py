@@ -8,9 +8,12 @@ def index(request):
 
 def height(request, height):
     b = Block.objects.get(block_height=height)
+    txs = Tx.objects.filter(block_id=b.id)
+
     template = loader.get_template('block/index.html')
     context = {
         'b': b,
+        'txs': txs,
     }
     return HttpResponse(template.render(context, request))
 

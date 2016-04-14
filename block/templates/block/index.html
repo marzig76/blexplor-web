@@ -1,14 +1,22 @@
 {% if b.block_height %}
     <a href="/block/{{ b.block_height }}/">Block {{ b.block_height }}</a>
-    Magic Number: {{ b.magic_number }}
-    Block Size: {{ b.block_size }}
-    Version: {{ b.version }}
-    Previous Hash: {{ b.prev_hash }}
-    Merkel Root: {{ b.merkel_root }}
-    Block Time: {{ b.block_time }}
-    Difficulty: {{ b.target }}
-    Nonce: {{ b.nonce }}
-    Tx Count: {{ b.tx_count }}
+    Magic Number: {{ b.magic_number }} <br />
+    Block Size: {{ b.block_size }} <br />
+    Version: {{ b.version }} <br />
+    Previous Hash: {{ b.prev_hash }} <br />
+    Merkel Root: {{ b.merkel_root }} <br />
+    Block Time: {{ b.block_time }} <br />
+    Difficulty: {{ b.target }} <br />
+    Nonce: {{ b.nonce }} <br />
+    Tx Count: {{ b.tx_count }} <br />
+    Txs: <br />
+    {% for tx in txs %}
+        ----------------------------<br />
+        Version: {{ tx.version }} <br />
+        Inputs: {{ tx.tx_input_count }} <br />
+        Outputs: {{ tx.tx_output_count }} <br />
+        Lock Time: {{ tx.lock_time }} <br />
+    {% endfor  %}
 {% else %}
     <p>No Block number given.</p>
 {% endif %}
