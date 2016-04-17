@@ -1,0 +1,32 @@
+<html>
+<head><title>Blexplor!</title></head>
+
+<body>
+
+<h1>Blexplor!</h1>
+<br />
+A simple web based block explorer.  Click a recent block listed below, or search for a block number or address.
+<br /><br />
+<form method='GET' action='search/'>
+  <input name='search' type='text'>
+  <input type='submit' value='Search'>
+</form>
+<br />
+<table border=1>
+  <th>Block Height</th>
+  <th>Transactions</th>
+  {% for block in blocks %}
+      <tr>
+        <td>
+          <a href='block/{{ block.block_height }}'>
+            Block {{ block.block_height }}</a>
+        </td>
+        <td>
+          {{ block.tx_count }}
+        </td>
+      </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
