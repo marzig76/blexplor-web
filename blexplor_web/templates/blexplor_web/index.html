@@ -1,3 +1,5 @@
+{% load block_extras %}
+
 <html>
 <head><title>Blexplor!</title></head>
 
@@ -13,8 +15,9 @@ A simple web based block explorer.  Click a recent block listed below, or search
 </form>
 <br />
 <table border=1>
-  <th>Block Height</th>
+  <th>Block Number</th>
   <th>Transactions</th>
+  <th>Time</tr>
   {% for block in blocks %}
       <tr>
         <td>
@@ -23,6 +26,9 @@ A simple web based block explorer.  Click a recent block listed below, or search
         </td>
         <td>
           {{ block.tx_count }}
+        </td>
+        <td>
+          {{ block.block_time|date_format }}
         </td>
       </tr>
   {% endfor %}
