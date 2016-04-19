@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^$', blexplor_web.views.index),
     url(r'^block/', include('block.urls')),
     url(r'^address/', include('address.urls')),
+    url(r'^search/', include('search.urls')),
     url(r'^admin/', admin.site.urls),
 ]
