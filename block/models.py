@@ -34,6 +34,7 @@ class TxInput(models.Model):
     script_bytes = models.IntegerField()
     sigscript = models.CharField(max_length=100)
     sequence = models.IntegerField()
+    addr = models.CharField(max_length=100, default='')
 
 
 class TxOutput(models.Model):
@@ -41,3 +42,4 @@ class TxOutput(models.Model):
     value = models.IntegerField()
     script_pk_bytes = models.IntegerField()
     script_pk = models.CharField(max_length=100)
+    addr = models.CharField(max_length=100, default='')
