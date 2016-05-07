@@ -43,4 +43,4 @@ class TxOutput(models.Model):
     script_pk_bytes = models.IntegerField()
     script_pk = models.CharField(max_length=100)
     addr = models.CharField(max_length=100, default='')
-    script_pk_string = models.CharField(max_length=100, default='')
+    script_pk_string = models.CharField(max_length=500, default='')
