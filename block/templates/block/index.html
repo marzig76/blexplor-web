@@ -1,3 +1,5 @@
+{% load block_extras %}
+
 {% if b.block_height %}
     <a href="/block/{{ b.block_height }}/">Block {{ b.block_height }}</a><br />
     Magic Number: {{ b.magic_number }} <br />
@@ -19,6 +21,7 @@
             {% if input.tx_id == tx.id %}
                 Previous Hash: {{ input.prev_hash }} <br />
                 Index: {{ input.index }} <br />
+                Address: {{ input.addr }} <br />
                 Script Bytes: {{ input.script_bytes }} <br />
                 Sigscript: {{ input.sigscript }} <br />
                 Sequence: {{ input.sequence }} <br />
@@ -28,9 +31,11 @@
 
         {% for output in outputs %}
             {% if output.tx_id == tx.id %}
-                Value: {{ output.value }} <br />
+                Address: {{ output.addr }} <br />
+                Value: {{ output.value|satoshis2btc }} BTC <br />
                 ScriptPK Bytes: {{ output.script_pk_bytes }} <br />
-                ScriptPK: {{ output.script_pk }} <br />
+                Raw ScriptPK: {{ output.script_pk }} <br />
+                ScriptPK: {{ output.script_pk_string }} <br />
             {% endif %}
         {% endfor %}
         Lock Time: {{ tx.lock_time }} <br />
