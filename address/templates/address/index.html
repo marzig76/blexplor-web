@@ -1,5 +1,22 @@
+{% load block_extras %}
+<a href="/">Home</a><br /><br />
 {% if address %}
     Details of address: <a href="/address/{{ address }}/">{{ address }}</a>
+    <br /><br />
+
+    {% for input in inputs %}
+      Address: {{ input.addr }} <br />
+      Sigscript: {{ input.sigscript }} <br />
+      <br />
+    {% endfor %}
+
+    {% for output in outputs %}
+      Address: {{ output.addr }} <br />
+      Value: {{ output.value|satoshis2btc }} BTC <br />
+      Script: {{ output.script_pk_string }} <br />
+      <br />
+    {% endfor %}
+
 {% else %}
     <p>No address specified.</p>
 {% endif %}
