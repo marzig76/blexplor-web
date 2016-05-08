@@ -10,11 +10,10 @@ def index(request):
         if search.isnumeric():
             return HttpResponseRedirect("/block/" + search)
         else:
-            response = 'Address: ' + search
+            return HttpResponseRedirect("/address/" + search)
     else:
-        response = 'No search parameter provided.'
+        return HttpResponse('No search parameter provided.')
 
-    return HttpResponse(response)
 
 def search_string(request, search_string):
     return HttpResponse("Search string: " + search_string)
