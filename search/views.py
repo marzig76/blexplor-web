@@ -13,7 +13,3 @@ def index(request):
             return HttpResponseRedirect("/address/" + search)
     else:
         return HttpResponse('No search parameter provided.')
-
-
-def search_string(request, search_string):
-    return HttpResponse("Search string: " + search_string)
