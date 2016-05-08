@@ -7,9 +7,13 @@ def index(request):
     return HttpResponse("Address not specified")
 
 def address(request, address):
+    inputs = TxInput.objects.filter(addr=address)
+    outputs = TxOutput.objects.filter(addr=address)
+
     template = loader.get_template('address/index.html')
     context = {
         'address': address,
+        'inputs': inputs,
+        'outputs': outputs,
     }
     return HttpResponse(template.render(context, request))
-
