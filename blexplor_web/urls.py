@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^block/', include('block.urls')),
     url(r'^address/', include('address.urls')),
     url(r'^search/', include('search.urls')),
+    url(r'^tx/', include('tx.urls')),
     url(r'^admin/', admin.site.urls),
 ]
