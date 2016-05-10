@@ -9,7 +9,9 @@ def index(request):
     if search != '':
         if search.isnumeric():
             return HttpResponseRedirect("/block/" + search)
-        else:
+        elif len(search) == 34:
             return HttpResponseRedirect("/address/" + search)
+        else:
+            return HttpResponseRedirect("/tx/" + search)
     else:
         return HttpResponse('No search parameter provided.')
