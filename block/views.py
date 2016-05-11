@@ -30,4 +30,9 @@ def height(request, height):
             }
         return HttpResponse(template.render(context, request))
     except ObjectDoesNotExist:
-        return HttpResponse("Block does not exist")
+        message = "Block not found"
+        template = loader.get_template('blexplor_web/simple_message.html')
+        context = {
+            'message': message,
+        }
+        return HttpResponse(template.render(context, request))

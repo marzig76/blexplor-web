@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.core.exceptions import ObjectDoesNotExist
 from block.models import Tx, TxInput, TxOutput
 
 
@@ -27,4 +28,9 @@ def tx(request, tx):
             }
         return HttpResponse(template.render(context, request))
     except ObjectDoesNotExist:
-        return HttpResponse("Block does not exist")
+        message = "Transaction not found"
+        template = loader.get_template('blexplor_web/simple_message.html')
+        context = {
+            'message': message,
+        }
+        return HttpResponse(template.render(context, request))
