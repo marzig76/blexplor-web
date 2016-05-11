@@ -3,8 +3,15 @@ from django.http import HttpResponse
 from django.template import loader
 from block.models import Block, Tx, TxInput, TxOutput
 
+
 def index(request):
-    return HttpResponse("Address not specified")
+    message = "Address not specified"
+    template = loader.get_template('blexplor_web/simple_message.html')
+    context = {
+        'message': message,
+    }
+    return HttpResponse(template.render(context, request))
+
 
 def address(request, address):
     inputs = TxInput.objects.filter(addr=address)

@@ -6,7 +6,12 @@ from block.models import Block, Tx, TxInput, TxOutput
 
 
 def index(request):
-    return HttpResponse("Block not specified")
+    message = "Block not specified"
+    template = loader.get_template('blexplor_web/simple_message.html')
+    context = {
+        'message': message,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def height(request, height):

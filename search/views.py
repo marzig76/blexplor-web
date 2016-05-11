@@ -4,6 +4,7 @@ from django.template import loader
 from block.models import Block
 from django.http import HttpResponseRedirect
 
+
 def index(request):
     search = request.GET['search']
     if search != '':
@@ -14,4 +15,9 @@ def index(request):
         else:
             return HttpResponseRedirect("/tx/" + search)
     else:
-        return HttpResponse('No search parameter provided.')
+        message = "No search parameter provided."
+        template = loader.get_template('blexplor_web/simple_message.html')
+        context = {
+            'message': message,
+        }
+        return HttpResponse(template.render(context, request))
