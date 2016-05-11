@@ -1,0 +1,29 @@
+{% load block_extras %}
+<a href="/">Home</a><br /><br />
+
+Version: {{ tx.version }} <br />
+Inputs: {{ tx.tx_input_count }} <br />
+
+    {% for input in inputs %}
+        {% if input.tx_id == tx.id %}
+            Previous Hash: {{ input.prev_hash }} <br />
+            Index: {{ input.index }} <br />
+            Address: <a href="/address/{{ input.addr }}/">{{ input.addr }}</a><br />
+            Script Bytes: {{ input.script_bytes }} <br />
+            Sigscript: {{ input.sigscript }} <br />
+            Sequence: {{ input.sequence }} <br />
+        {% endif %}
+    {% endfor %}
+Outputs: {{ tx.tx_output_count }} <br />
+
+    {% for output in outputs %}
+        {% if output.tx_id == tx.id %}
+            Address: <a href="/address/{{ output.addr }}/">{{ output.addr }}</a><br />
+            Value: {{ output.value|satoshis2btc }} BTC <br />
+            ScriptPK Bytes: {{ output.script_pk_bytes }} <br />
+            Raw ScriptPK: {{ output.script_pk }} <br />
+            ScriptPK: {{ output.script_pk_string }} <br />
+        {% endif %}
+    {% endfor %}
+Lock Time: {{ tx.lock_time }} <br />
+
