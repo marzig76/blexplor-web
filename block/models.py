@@ -25,6 +25,7 @@ class Tx(models.Model):
     tx_input_count = models.IntegerField()
     tx_output_count = models.IntegerField()
     lock_time = models.IntegerField()
+    tx_hash = models.CharField(max_length=100, default='')
 
 
 class TxInput(models.Model):
