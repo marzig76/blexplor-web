@@ -7,39 +7,31 @@
     Version: {{ b.version }} <br />
     Previous Hash: {{ b.prev_hash }} <br />
     Merkel Root: {{ b.merkel_root }} <br />
-    Block Time: {{ b.block_time }} <br />
+    Block Time: {{ b.block_time|date_format }} <br />
     Difficulty: {{ b.target }} <br />
     Nonce: {{ b.nonce }} <br />
     Tx Count: {{ b.tx_count }} <br />
-    Txs: <br />
+    Transactions: <br />
+    <table border=1>
+    <th>Inputs</th><th>Outputs</th>
     {% for tx in txs %}
-        ----------------------------<br />
-        Version: {{ tx.version }} <br />
-        Inputs: {{ tx.tx_input_count }} <br />
-
-        {% for input in inputs %}
-            {% if input.tx_id == tx.id %}
-                Previous Hash: {{ input.prev_hash }} <br />
-                Index: {{ input.index }} <br />
-                Address: <a href="/address/{{ input.addr }}/">{{ input.addr }}</a><br />
-                Script Bytes: {{ input.script_bytes }} <br />
-                Sigscript: {{ input.sigscript }} <br />
-                Sequence: {{ input.sequence }} <br />
-            {% endif %}
-        {% endfor %}
-        Outputs: {{ tx.tx_output_count }} <br />
-
+      <tr><td>
+      {% for input in inputs %}
+        {% if input.tx_id == tx.id %}
+          <a href="/address/{{ input.addr }}/">{{ input.addr }}</a>
+          <br />
+        {% endif %}
+      {% endfor %}
+      </td><td>
         {% for output in outputs %}
-            {% if output.tx_id == tx.id %}
-                Address: <a href="/address/{{ output.addr }}/">{{ output.addr }}</a><br />
-                Value: {{ output.value|satoshis2btc }} BTC <br />
-                ScriptPK Bytes: {{ output.script_pk_bytes }} <br />
-                Raw ScriptPK: {{ output.script_pk }} <br />
-                ScriptPK: {{ output.script_pk_string }} <br />
-            {% endif %}
+          {% if output.tx_id == tx.id %}
+            <a href="/address/{{ output.addr }}/">{{ output.addr }}</a>
+            ({{ output.value|satoshis2btc }} BTC) <br />
+          {% endif %}
         {% endfor %}
-        Lock Time: {{ tx.lock_time }} <br />
+        </td></tr>
     {% endfor  %}
+    </table>
 {% else %}
     <p>No Block number given.</p>
 {% endif %}
